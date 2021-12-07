@@ -8,7 +8,9 @@ import org.json.JSONObject;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class JsonExtractor {
 
@@ -35,8 +37,8 @@ public class JsonExtractor {
         return pokemonNames;
     }
 
-    public List<Pokemon> getAllPokemonInfo(List<String> pokemonNames) throws JsonProcessingException {
-        List<Pokemon> pokemons = new ArrayList<>();
+    public Map<String, Pokemon> getAllPokemonInfo(List<String> pokemonNames) throws JsonProcessingException {
+        Map<String, Pokemon> pokemons = new HashMap<>();
         ObjectMapper objectMapper = new ObjectMapper();
         String url;
         String pokemonJSON;
@@ -45,7 +47,7 @@ public class JsonExtractor {
             url = "https://pokeapi.co/api/v2/pokemon/{name}";
             pokemonJSON = restTemplate.getForObject(url, String.class, name);
             pokemon = objectMapper.readValue(pokemonJSON, Pokemon.class);
-            pokemons.add(pokemon);
+            pokemons.put(pokemon.getName(), pokemon);
         }
         return pokemons;
     }

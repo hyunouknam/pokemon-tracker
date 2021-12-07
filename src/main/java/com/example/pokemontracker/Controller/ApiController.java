@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ApiController {
 
-    List<Pokemon> pokemons;
+    Map<String, Pokemon> pokemons;
 
     @GetMapping(value = "/pokemon")
-    public List<Pokemon> getPokemon() {
+    public Map<String, Pokemon> getPokemon() {
         // might check if pokemon exists in cache(arraylist) so that it doesn't unnecessarily do another API call
 
         JsonExtractor extractor = new JsonExtractor();
