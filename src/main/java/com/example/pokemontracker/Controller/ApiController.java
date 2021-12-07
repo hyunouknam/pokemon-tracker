@@ -4,6 +4,8 @@ import com.example.pokemontracker.Model.Extraction.Pokemon;
 import com.example.pokemontracker.Util.JsonExtractor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,6 +30,16 @@ public class ApiController {
 
         return pokemons;
     }
+
+    /*
+    @PostMapping(value = "/pokemon")
+    public void postPokemon(@RequestParam String name, String ability, String move1, String move2, String move3, String move4,
+                            String hp, String attack, String defense, String special_attack, String special_defense, String speed) {
+        // add nature later
+
+    }
+
+     */
 
     @GetMapping(value = "/test")
     public Pokemon test() {

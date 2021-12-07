@@ -22,13 +22,11 @@ public class JsonExtractor {
 
     public List<String> getPokemonNames() {
 
-        // Consume pokemon generation to get pokemon species
         String url = "https://pokeapi.co/api/v2/pokemon?limit=896";
         String pokemonJSON = restTemplate.getForObject(url, String.class);
         JSONObject pokemonJSONObj = new JSONObject(pokemonJSON);
         JSONArray pokemonArr = pokemonJSONObj.getJSONArray("results");
 
-        // Extract pokemon species to get the names to separately call individual pokemon API calls later
         List<String> pokemonNames = new ArrayList<>();
         for(int i = 0; i < pokemonArr.length(); i++) {
             pokemonNames.add(pokemonArr.getJSONObject(i).getString("name"));
