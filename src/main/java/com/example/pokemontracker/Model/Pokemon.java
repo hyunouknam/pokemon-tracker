@@ -1,11 +1,16 @@
 package com.example.pokemontracker.Model;
 
+import com.example.pokemontracker.Model.Extraction.Ability;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Pokemon {
 
     long id;
     String name;
-    String ability;
-    String[] moves;
+    List<Ability> abilities;
 
     public Pokemon() {
 
@@ -27,19 +32,11 @@ public class Pokemon {
         this.name = name;
     }
 
-    public String getAbility() {
-        return ability;
+    public List<Ability> getAbilities() {
+        return abilities;
     }
 
-    public void setAbility(String ability) {
-        this.ability = ability;
-    }
-
-    public String[] getMoves() {
-        return moves;
-    }
-
-    public void setMoves(String[] moves) {
-        this.moves = moves;
+    public void setAbilities(List<Ability> abilities) {
+        this.abilities = abilities;
     }
 }
