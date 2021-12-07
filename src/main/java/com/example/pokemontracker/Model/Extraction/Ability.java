@@ -1,7 +1,6 @@
 package com.example.pokemontracker.Model.Extraction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonKey;
 
 import java.util.Map;
 
@@ -10,7 +9,7 @@ public class Ability {
 
     String is_hidden;
     @JsonIgnoreProperties(value = "url")
-    Map<String,String> ability;
+    Map<String, String> ability;
 
     public Ability() {
 
