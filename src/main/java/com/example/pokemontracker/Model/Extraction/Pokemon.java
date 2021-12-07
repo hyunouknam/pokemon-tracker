@@ -1,4 +1,4 @@
-package com.example.pokemontracker.Model;
+package com.example.pokemontracker.Model.Extraction;
 
 import com.example.pokemontracker.Model.Extraction.Ability;
 import com.example.pokemontracker.Model.Extraction.Move;

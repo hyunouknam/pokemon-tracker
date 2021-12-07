@@ -1,6 +1,6 @@
 package com.example.pokemontracker.Controller;
 
-import com.example.pokemontracker.Model.Pokemon;
+import com.example.pokemontracker.Model.Extraction.Pokemon;
 import com.example.pokemontracker.Util.JsonExtractor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.GetMapping;
