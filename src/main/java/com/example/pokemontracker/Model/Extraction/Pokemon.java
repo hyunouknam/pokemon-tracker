@@ -2,7 +2,6 @@ package com.example.pokemontracker.Model.Extraction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
