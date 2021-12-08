@@ -1,8 +1,10 @@
 package com.example.pokemontracker.Controller;
 
 import com.example.pokemontracker.Model.Extraction.Pokemon;
+import com.example.pokemontracker.Service.PokemonService;
 import com.example.pokemontracker.Util.JsonExtractor;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +17,9 @@ import java.util.Map;
 public class ApiController {
 
     Map<String, Pokemon> pokemons;
+
+    @Autowired
+    PokemonService service = new PokemonService();
 
     @GetMapping(value = "/pokemon")
     public Map<String, Pokemon> getPokemon() {
