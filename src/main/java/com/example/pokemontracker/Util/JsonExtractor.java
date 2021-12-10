@@ -50,10 +50,10 @@ public class JsonExtractor {
         return pokemons;
     }
 
-    public Pokemon test() throws JsonProcessingException {
+    public Pokemon getPokemonInfo(String name) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         String url = "https://pokeapi.co/api/v2/pokemon/{name}";
-        String json = restTemplate.getForObject(url, String.class, "rockruff");
+        String json = restTemplate.getForObject(url, String.class, name);
         Pokemon pokemon = objectMapper.readValue(json, Pokemon.class);
         return pokemon;
     }
