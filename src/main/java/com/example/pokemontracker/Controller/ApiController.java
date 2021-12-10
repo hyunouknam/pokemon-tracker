@@ -31,14 +31,26 @@ public class ApiController {
         return pokemonNames;
     }
 
-    /*
+
     @PostMapping(value = "/pokemon")
-    public void postPokemon(@RequestParam String name, String ability, String move1, String move2, String move3, String move4,
-                            String hp, String attack, String defense, String special_attack, String special_defense, String speed) {
+    public void postPokemon(@RequestParam String name,
+                            @RequestParam String ability,
+                            @RequestParam String move1,
+                            @RequestParam String move2,
+                            @RequestParam String move3,
+                            @RequestParam String move4,
+                            @RequestParam int hp,
+                            @RequestParam int attack,
+                            @RequestParam int defense,
+                            @RequestParam int special_attack,
+                            @RequestParam int special_defense,
+                            @RequestParam int speed) {
         // add nature later
+
+        service.addMyPokemon(name, ability, move1, move2, move3, move4, hp, attack, defense, special_attack, special_defense, speed);
 
     }
 
-     */
+
 
 }

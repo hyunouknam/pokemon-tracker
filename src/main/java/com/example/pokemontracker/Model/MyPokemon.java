@@ -23,6 +23,22 @@ public class MyPokemon {
 
     }
 
+    public MyPokemon(String name, String ability, String move1, String move2, String move3, String move4,
+                     int hp, int attack, int defense, int special_attack, int special_defense, int speed) {
+        this.name = name;
+        this.ability = ability;
+        this.move1 = move1;
+        this.move2 = move2;
+        this.move3 = move3;
+        this.move4 = move4;
+        this.hp = hp;
+        this.attack = attack;
+        this.defense = defense;
+        this.special_attack = special_attack;
+        this.special_defense = special_defense;
+        this.speed = speed;
+    }
+
     public long getId() {
         return id;
     }
