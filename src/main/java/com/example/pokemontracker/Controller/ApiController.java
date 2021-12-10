@@ -1,6 +1,7 @@
 package com.example.pokemontracker.Controller;
 
 import com.example.pokemontracker.Model.Extraction.Pokemon;
+import com.example.pokemontracker.Model.MyPokemon;
 import com.example.pokemontracker.Service.PokemonService;
 import com.example.pokemontracker.Util.JsonExtractor;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -51,6 +52,10 @@ public class ApiController {
 
     }
 
+    @GetMapping(value = "/mypokemon")
+    public List<MyPokemon> getMyPokemon() {
+        return service.getAllMyPokemon();
+    }
 
 
 }

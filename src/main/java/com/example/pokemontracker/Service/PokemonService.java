@@ -5,6 +5,8 @@ import com.example.pokemontracker.Repository.MyPokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PokemonService {
 
@@ -16,5 +18,9 @@ public class PokemonService {
         MyPokemon myPokemon = new MyPokemon(name, ability, move1, move2, move3, move4,
                                             hp, attack, defense, special_attack, special_defense, speed);
         repository.save(myPokemon);
+    }
+
+    public List<MyPokemon> getAllMyPokemon() {
+        return repository.findAll();
     }
 }
