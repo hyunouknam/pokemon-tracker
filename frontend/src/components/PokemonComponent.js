@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Select from 'react-select'
 import PokemonService from '../services/PokemonService'
 
 function PokemonComponent() {
@@ -16,16 +17,17 @@ function PokemonComponent() {
         });
     };
 
+    // change pokemon array into array of objects to be usable for react-select
+    let pokemonList = [];
+    pokemons.forEach(pokemon => 
+        pokemonList.push({ label: pokemon, value: pokemon }));
+
     return (
         <div className='container'>
             <h1 className='text-center'> Pokemon List </h1>
                 {       
-                pokemons.map(
-                    pokemon =>
-                        <h2>
-                            {pokemon}
-                        </h2>
-                )}
+                <Select options={pokemonList} />
+                }
         </div>
     )
 }
