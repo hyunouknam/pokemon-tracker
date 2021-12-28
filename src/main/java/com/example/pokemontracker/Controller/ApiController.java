@@ -6,15 +6,13 @@ import com.example.pokemontracker.Service.PokemonService;
 import com.example.pokemontracker.Util.JsonExtractor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin("http://localhost:3000/")
 public class ApiController {
 
     Map<String, Pokemon> pokemons;
