@@ -19,19 +19,33 @@ public class ApiController {
 
     @Autowired
     PokemonService service;
+    @Autowired
+    JsonExtractor extractor;
 
-    @GetMapping(value = "/pokemon")
-    public List<String> getPokemon() {
+    @GetMapping(value = "/pokemon-list")
+    public List<String> getPokemonList() {
         // might check if pokemon exists in cache(arraylist) so that it doesn't unnecessarily do another API call
 
-        JsonExtractor extractor = new JsonExtractor();
         List<String> pokemonNames = extractor.getPokemonNames();
 
         return pokemonNames;
     }
 
+    @GetMapping(value = "/pokemon-info")
+    public Pokemon getPokemon(@RequestParam String name) {
+        Pokemon pokemon = new Pokemon();
 
-    @PostMapping(value = "/pokemon")
+        try {
+            pokemon = extractor.getPokemonInfo(name);
+        } catch(JsonProcessingException e) {
+
+        }
+
+        return pokemon;
+    }
+
+
+    @PostMapping(value = "/my-pokemon")
     public void postPokemon(@RequestParam String name,
                             @RequestParam String ability,
                             @RequestParam String move1,
