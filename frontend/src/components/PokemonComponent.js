@@ -6,8 +6,7 @@ function PokemonComponent() {
 
     const [pokemons, setPokemons] = useState([])
     const [selectedPokemon, setSelectedPokemon] = useState({})
-
-    const pokemonList = [];
+    const [pokemonList, setPokemonList] = useState([])
 
     useEffect(() => {
         getPokemons();
@@ -15,7 +14,6 @@ function PokemonComponent() {
 
     useEffect(() => {
         populateList();
-        console.log(pokemons);
     }, [pokemons])
 
     const getPokemons = async () => {
@@ -30,35 +28,37 @@ function PokemonComponent() {
 
     const populateList = () => {
         // change pokemon array into array of objects to be usable for react-select
+        const pokemonList = [];
         pokemons.forEach(pokemon => 
         pokemonList.push({ label: pokemon, value: pokemon }));
+        setPokemonList(pokemonList);
     }
 
     const getAbilities = () => {
-        const arr = selectedPokemon.abilities.map(selectedPokemon => {
-            return selectedPokemon.ability.name;
+        const arr = selectedPokemon.abilities.map(abilities => {
+            return abilities.ability.name;
         });
-        console.log(arr);
         return arr;
     }
 
     const getMoves = () => {
-        const arr = selectedPokemon.moves.map(selectedPokemon => {
-            return selectedPokemon.move.name;
+        const arr = [];
+        selectedPokemon.moves.forEach(moves => {
+            arr.push({label:moves.move.name, value:moves.move.name});
         });
         return arr;
     }
 
     const getStats = () => {
-        const arr = selectedPokemon.stats.map(selectedPokemon => {
-            return selectedPokemon.stat.name;
+        const arr = selectedPokemon.stats.map(stats => {
+            return stats.stat.name;
         });
         return arr;
     }
 
     const getTypes = () => {
-        const arr = selectedPokemon.types.map(selectedPokemon => {
-            return selectedPokemon.type.name;
+        const arr = selectedPokemon.types.map(types => {
+            return types.type.name;
         });
         return arr;
     }
@@ -74,20 +74,8 @@ function PokemonComponent() {
                 
                 <form>
                     {
-                        Object.keys(selectedPokemon).length > 0 && <Select options={getAbilities}/>
+                        Object.keys(selectedPokemon).length > 0 && <Select options={getMoves()}/>
                     }
-                    {Object.keys(selectedPokemon).length > 0 && getAbilities().map(ability => {
-                        return <h2>{ability}</h2>
-                    })}
-                    {Object.keys(selectedPokemon).length > 0 && getMoves().map(move => {
-                        return <h2>{move}</h2>
-                    })}
-                    {Object.keys(selectedPokemon).length > 0 && getStats().map(stat => {
-                        return <h2>{stat}</h2>
-                    })}
-                    {Object.keys(selectedPokemon).length > 0 && getTypes().map(type => {
-                        return <h2>{type}</h2>
-                    })}
                 </form>
 
         </div>
