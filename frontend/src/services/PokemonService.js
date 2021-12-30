@@ -5,7 +5,7 @@ const POKEMON_INFO_REST_API_URL = 'http://localhost:8080/pokemon-info';
 
 class PokemonService {
 
-    getPokemons() {
+    getPokemonList() {
         return axios.get(POKEMONS_REST_API_URL);
     }
 
