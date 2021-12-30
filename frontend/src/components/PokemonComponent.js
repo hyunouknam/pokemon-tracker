@@ -4,44 +4,64 @@ import PokemonService from '../services/PokemonService'
 
 function PokemonComponent() {
 
-    const dog = "dog";
     const [pokemons, setPokemons] = useState([])
     const [selectedPokemon, setSelectedPokemon] = useState({})
 
+    const pokemonList = [];
+
     useEffect(() => {
-        getPokemons()
-    }, [])
+        getPokemons();
+    }, []);
+
+    useEffect(() => {
+        populateList();
+        console.log(pokemons);
+    }, [pokemons])
 
     const getPokemons = async () => {
-        PokemonService.getPokemonList().then((response) => {
-            setPokemons(response.data);
-        });
+        const response = await PokemonService.getPokemonList();
+        setPokemons(response.data);
     };
 
-    const getPokemonData = (option) => {
-        PokemonService.getPokemonInfo(option.value).then((response) => {
-            setSelectedPokemon(response.data);
-        });
+    const getPokemonData = async (option) => {
+        const response = await PokemonService.getPokemonInfo(option.value);
+        setSelectedPokemon(response.data);
     };
 
-
-    const setMyPokemon = () => {
-
+    const populateList = () => {
+        // change pokemon array into array of objects to be usable for react-select
+        pokemons.forEach(pokemon => 
+        pokemonList.push({ label: pokemon, value: pokemon }));
     }
-/*
-    {
-        x.abilities.map(e => {
-            return <div>
-                <div>{e.ability.name}</div>
-            </div>
-            })
-    }
-*/
 
-    // change pokemon array into array of objects to be usable for react-select
-    let pokemonList = [];
-    pokemons.forEach(pokemon => 
-    pokemonList.push({ label: pokemon, value: pokemon }));
+    const getAbilities = () => {
+        const arr = selectedPokemon.abilities.map(selectedPokemon => {
+            return selectedPokemon.ability.name;
+        });
+        console.log(arr);
+        return arr;
+    }
+
+    const getMoves = () => {
+        const arr = selectedPokemon.moves.map(selectedPokemon => {
+            return selectedPokemon.move.name;
+        });
+        return arr;
+    }
+
+    const getStats = () => {
+        const arr = selectedPokemon.stats.map(selectedPokemon => {
+            return selectedPokemon.stat.name;
+        });
+        return arr;
+    }
+
+    const getTypes = () => {
+        const arr = selectedPokemon.types.map(selectedPokemon => {
+            return selectedPokemon.type.name;
+        });
+        return arr;
+    }
 
     return (
         <div className='container'>
@@ -51,14 +71,23 @@ function PokemonComponent() {
                 }
 
                 <h2>{selectedPokemon.name}</h2>
-
-                <h2>{JSON.stringify(selectedPokemon.abilities)}</h2>
-                <h2>{JSON.stringify(selectedPokemon.moves)}</h2>
-                <h2>{JSON.stringify(selectedPokemon.stats)}</h2>
-                <h2>{JSON.stringify(selectedPokemon.types)}</h2>
-
-                <form onSubmit={setMyPokemon}>
-
+                
+                <form>
+                    {
+                        Object.keys(selectedPokemon).length > 0 && <Select options={getAbilities}/>
+                    }
+                    {Object.keys(selectedPokemon).length > 0 && getAbilities().map(ability => {
+                        return <h2>{ability}</h2>
+                    })}
+                    {Object.keys(selectedPokemon).length > 0 && getMoves().map(move => {
+                        return <h2>{move}</h2>
+                    })}
+                    {Object.keys(selectedPokemon).length > 0 && getStats().map(stat => {
+                        return <h2>{stat}</h2>
+                    })}
+                    {Object.keys(selectedPokemon).length > 0 && getTypes().map(type => {
+                        return <h2>{type}</h2>
+                    })}
                 </form>
 
         </div>
