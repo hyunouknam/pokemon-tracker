@@ -54,10 +54,14 @@ public class ApiController {
 
     }
 
-    @GetMapping(value = "/mypokemon")
+    @GetMapping(value = "/my-pokemon")
     public List<MyPokemon> getMyPokemon() {
         return service.getAllMyPokemon();
     }
 
+    @PutMapping(value = "/my-pokemon")
+    public void putPokemon(@RequestBody MyPokemon myPokemon) {
+        service.updatePokemon(myPokemon);
+    }
 
 }

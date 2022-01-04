@@ -21,4 +21,8 @@ public class PokemonService {
     public List<MyPokemon> getAllMyPokemon() {
         return repository.findAll();
     }
+
+    public void updatePokemon(MyPokemon myPokemon) {
+        repository.save(myPokemon);
+    }
 }
