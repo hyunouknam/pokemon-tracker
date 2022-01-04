@@ -22,7 +22,11 @@ public class PokemonService {
         return repository.findAll();
     }
 
-    public void updatePokemon(MyPokemon myPokemon) {
+    public void updateMyPokemon(MyPokemon myPokemon) {
         repository.save(myPokemon);
+    }
+
+    public void deleteMyPokemon(MyPokemon myPokemon) {
+        repository.deleteById(myPokemon.getId());
     }
 }

@@ -45,7 +45,7 @@ public class ApiController {
 
 
     @PostMapping(value = "/my-pokemon")
-    public void postPokemon(@RequestBody MyPokemon myPokemon) {
+    public void postMyPokemon(@RequestBody MyPokemon myPokemon) {
         // add nature later
         MyPokemon selected = new MyPokemon(myPokemon.getName(), myPokemon.getAbility(), myPokemon.getMoves(),
                 myPokemon.getHp(), myPokemon.getAttack(), myPokemon.getDefense(), myPokemon.getSpecial_attack(), myPokemon.getSpecial_defense(), myPokemon.getSpeed());
@@ -60,8 +60,13 @@ public class ApiController {
     }
 
     @PutMapping(value = "/my-pokemon")
-    public void putPokemon(@RequestBody MyPokemon myPokemon) {
-        service.updatePokemon(myPokemon);
+    public void putMyPokemon(@RequestBody MyPokemon myPokemon) {
+        service.updateMyPokemon(myPokemon);
+    }
+
+    @DeleteMapping(value = "/my-pokemon")
+    public void deleteMyPokemon(@RequestBody MyPokemon myPokemon) {
+        service.deleteMyPokemon(myPokemon);
     }
 
 }
