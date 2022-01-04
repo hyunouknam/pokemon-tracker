@@ -5,6 +5,7 @@ import com.example.pokemontracker.Model.MyPokemon;
 import com.example.pokemontracker.Service.PokemonService;
 import com.example.pokemontracker.Util.JsonExtractor;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +15,6 @@ import java.util.Map;
 @RestController
 @CrossOrigin("http://localhost:3000/")
 public class ApiController {
-
-    Map<String, Pokemon> pokemons;
 
     @Autowired
     PokemonService service;
@@ -46,21 +45,12 @@ public class ApiController {
 
 
     @PostMapping(value = "/my-pokemon")
-    public void postPokemon(@RequestParam String name,
-                            @RequestParam String ability,
-                            @RequestParam String move1,
-                            @RequestParam String move2,
-                            @RequestParam String move3,
-                            @RequestParam String move4,
-                            @RequestParam int hp,
-                            @RequestParam int attack,
-                            @RequestParam int defense,
-                            @RequestParam int special_attack,
-                            @RequestParam int special_defense,
-                            @RequestParam int speed) {
+    public void postPokemon(@RequestBody MyPokemon myPokemon) {
         // add nature later
+        MyPokemon selected = new MyPokemon(myPokemon.getName(), myPokemon.getAbility(), myPokemon.getMoves(),
+                myPokemon.getHp(), myPokemon.getAttack(), myPokemon.getDefense(), myPokemon.getSpecial_attack(), myPokemon.getSpecial_defense(), myPokemon.getSpeed());
 
-        service.addMyPokemon(name, ability, move1, move2, move3, move4, hp, attack, defense, special_attack, special_defense, speed);
+        service.addMyPokemon(selected);
 
     }
 

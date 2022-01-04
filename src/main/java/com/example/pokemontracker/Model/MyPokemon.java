@@ -2,16 +2,15 @@ package com.example.pokemontracker.Model;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 public class MyPokemon {
 
     @Id
-    long id;
+    String id;
     String name;
     String ability;
-    String move1;
-    String move2;
-    String move3;
-    String move4;
+    List<String> moves;
     int hp;
     int attack;
     int defense;
@@ -23,14 +22,11 @@ public class MyPokemon {
 
     }
 
-    public MyPokemon(String name, String ability, String move1, String move2, String move3, String move4,
+    public MyPokemon(String name, String ability, List<String> moves,
                      int hp, int attack, int defense, int special_attack, int special_defense, int speed) {
         this.name = name;
         this.ability = ability;
-        this.move1 = move1;
-        this.move2 = move2;
-        this.move3 = move3;
-        this.move4 = move4;
+        this.moves = moves;
         this.hp = hp;
         this.attack = attack;
         this.defense = defense;
@@ -39,11 +35,11 @@ public class MyPokemon {
         this.speed = speed;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -63,36 +59,12 @@ public class MyPokemon {
         this.ability = ability;
     }
 
-    public String getMove1() {
-        return move1;
+    public List<String> getMoves() {
+        return moves;
     }
 
-    public void setMove1(String move1) {
-        this.move1 = move1;
-    }
-
-    public String getMove2() {
-        return move2;
-    }
-
-    public void setMove2(String move2) {
-        this.move2 = move2;
-    }
-
-    public String getMove3() {
-        return move3;
-    }
-
-    public void setMove3(String move3) {
-        this.move3 = move3;
-    }
-
-    public String getMove4() {
-        return move4;
-    }
-
-    public void setMove4(String move4) {
-        this.move4 = move4;
+    public void setMove1(List<String> moves) {
+        this.moves = moves;
     }
 
     public int getHp() {

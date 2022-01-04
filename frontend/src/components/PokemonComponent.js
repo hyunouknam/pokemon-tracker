@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Select from 'react-select'
+import Select, { createFilter } from 'react-select'
 import PokemonService from '../services/PokemonService'
 
 function PokemonComponent() {
@@ -7,6 +7,8 @@ function PokemonComponent() {
     const [pokemons, setPokemons] = useState([])
     const [selectedPokemon, setSelectedPokemon] = useState({})
     const [pokemonList, setPokemonList] = useState([])
+    const [ability, setAbility] = useState([])
+    const [moves, setMoves] = useState([])
 
     useEffect(() => {
         getPokemons();
@@ -35,8 +37,9 @@ function PokemonComponent() {
     }
 
     const getAbilities = () => {
-        const arr = selectedPokemon.abilities.map(abilities => {
-            return abilities.ability.name;
+        const arr = [];
+        selectedPokemon.abilities.forEach(abilities => {
+            arr.push({label:abilities.ability.name, value:abilities.ability.name});
         });
         return arr;
     }
@@ -50,32 +53,57 @@ function PokemonComponent() {
     }
 
     const getStats = () => {
-        const arr = selectedPokemon.stats.map(stats => {
-            return stats.stat.name;
+        const arr = [];
+        selectedPokemon.stats.forEach(stats => {
+            arr.push({label:stats.stat.name, value:stats.stat.name});
         });
         return arr;
     }
 
     const getTypes = () => {
-        const arr = selectedPokemon.types.map(types => {
-            return types.type.name;
+        const arr = selectedPokemon.types.map(selectedPokemon => {
+            return selectedPokemon.type.name;
         });
         return arr;
+    }
+
+    const setMyPokemon = (e) => {
+        e.preventDefault();
+        console.log(JSON.stringify(ability));
+        console.log(JSON.stringify(moves));
+        console.log("here");
     }
 
     return (
         <div className='container'>
             <h1 className='text-center'> Pokemon List </h1>
+                <h2>Name</h2>
                 {       
-                <Select options={pokemonList} onChange={getPokemonData}/>
+                <Select options={pokemonList} 
+                        filterOption={createFilter({ignoreAccents: false})} 
+                        onChange={getPokemonData}/>
                 }
-
-                <h2>{selectedPokemon.name}</h2>
                 
-                <form>
+                <form onSubmit={setMyPokemon}>
+
+                    <h2>Ability</h2>
                     {
-                        Object.keys(selectedPokemon).length > 0 && <Select options={getMoves()}/>
+                        Object.keys(selectedPokemon).length > 0 && <Select options={getAbilities()}
+                                                                           onChange={(value) => setAbility(value)}/>
                     }
+                    <h2>Moves</h2>
+                    {
+                        Object.keys(selectedPokemon).length > 0 && <Select options={getMoves()} 
+                                                                           isMulti
+                                                                           onChange={(value) => setMoves(value)}/>
+                    }
+                    {
+                        Object.keys(selectedPokemon).length > 0 && getTypes().map(type => {
+                            return <h2>{type}</h2>
+                        })
+                    }
+                    
+                    <input type="submit" value = "Add" />
                 </form>
 
         </div>
