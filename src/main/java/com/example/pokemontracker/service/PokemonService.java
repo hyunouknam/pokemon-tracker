@@ -1,7 +1,7 @@
-package com.example.pokemontracker.Service;
+package com.example.pokemontracker.service;
 
-import com.example.pokemontracker.Model.MyPokemon;
-import com.example.pokemontracker.Repository.MyPokemonRepository;
+import com.example.pokemontracker.model.MyPokemon;
+import com.example.pokemontracker.persistence.MyPokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

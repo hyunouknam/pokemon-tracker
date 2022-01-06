@@ -1,4 +1,4 @@
-package com.example.pokemontracker.Model.Extraction;
+package com.example.pokemontracker.model.extraction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;

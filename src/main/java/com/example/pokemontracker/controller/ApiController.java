@@ -1,16 +1,14 @@
-package com.example.pokemontracker.Controller;
+package com.example.pokemontracker.controller;
 
-import com.example.pokemontracker.Model.Extraction.Pokemon;
-import com.example.pokemontracker.Model.MyPokemon;
-import com.example.pokemontracker.Service.PokemonService;
-import com.example.pokemontracker.Util.JsonExtractor;
+import com.example.pokemontracker.model.extraction.Pokemon;
+import com.example.pokemontracker.model.MyPokemon;
+import com.example.pokemontracker.service.PokemonService;
+import com.example.pokemontracker.util.JsonExtractor;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @CrossOrigin("http://localhost:3000/")

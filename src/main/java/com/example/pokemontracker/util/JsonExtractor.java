@@ -1,6 +1,6 @@
-package com.example.pokemontracker.Util;
+package com.example.pokemontracker.util;
 
-import com.example.pokemontracker.Model.Extraction.Pokemon;
+import com.example.pokemontracker.model.extraction.Pokemon;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;

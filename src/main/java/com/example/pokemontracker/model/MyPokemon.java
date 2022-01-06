@@ -1,4 +1,4 @@
-package com.example.pokemontracker.Model;
+package com.example.pokemontracker.model;
 
 import org.springframework.data.annotation.Id;
 
