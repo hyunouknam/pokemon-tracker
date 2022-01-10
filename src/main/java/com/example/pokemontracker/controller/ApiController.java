@@ -45,10 +45,7 @@ public class ApiController {
     @PostMapping(value = "/my-pokemon")
     public void postMyPokemon(@RequestBody MyPokemon myPokemon) {
         // add nature later
-        MyPokemon selected = new MyPokemon(myPokemon.getName(), myPokemon.getAbility(), myPokemon.getMoves(),
-                myPokemon.getHp(), myPokemon.getAttack(), myPokemon.getDefense(), myPokemon.getSpecial_attack(), myPokemon.getSpecial_defense(), myPokemon.getSpeed());
-
-        service.addMyPokemon(selected);
+        service.addMyPokemon(myPokemon);
 
     }
 
