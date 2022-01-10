@@ -49,7 +49,7 @@ public class ApiController {
 
     }
 
-    @GetMapping(value = "/my-pokemon")
+    @GetMapping(value = "/get/my-pokemon")
     public List<MyPokemon> getMyPokemon() {
         return service.getAllMyPokemon();
     }
