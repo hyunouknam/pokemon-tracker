@@ -31,4 +31,12 @@ class UserRepositoryTest {
 
         assertEquals(user, existingUser);
     }
+
+    @Test
+    public void testFindByUsername() {
+        User user = repository.findByUsername("something123");
+
+        assertEquals(user.getPassword(), "cool123");
+        assertNotNull(user);
+    }
 }
