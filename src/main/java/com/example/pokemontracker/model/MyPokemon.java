@@ -1,21 +1,33 @@
 package com.example.pokemontracker.model;
 
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class MyPokemon {
 
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    long id;
+    @Column(name = "name")
     String name;
+    @Column(name = "ability")
     String ability;
+    @ElementCollection
+    @CollectionTable(name = "moves_list", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "moves")
     List<String> moves;
+    @Column(name = "hp")
     int hp;
+    @Column(name = "attack")
     int attack;
+    @Column(name = "defense")
     int defense;
+    @Column(name = "special_attack")
     int special_attack;
+    @Column(name = "special_defense")
     int special_defense;
+    @Column(name = "speed")
     int speed;
 
     public MyPokemon() {
@@ -35,11 +47,11 @@ public class MyPokemon {
         this.speed = speed;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -63,7 +75,7 @@ public class MyPokemon {
         return moves;
     }
 
-    public void setMove1(List<String> moves) {
+    public void setMoves(List<String> moves) {
         this.moves = moves;
     }
 

@@ -7,9 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
-public class PokemonService {
+public class MyPokemonService {
 
     @Autowired
     MyPokemonRepository repository;

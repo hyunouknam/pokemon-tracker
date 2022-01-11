@@ -2,7 +2,7 @@ package com.example.pokemontracker.controller;
 
 import com.example.pokemontracker.model.extraction.Pokemon;
 import com.example.pokemontracker.model.MyPokemon;
-import com.example.pokemontracker.service.PokemonService;
+import com.example.pokemontracker.service.MyPokemonService;
 import com.example.pokemontracker.util.JsonExtractor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 public class ApiController {
 
     @Autowired
-    PokemonService service;
+    MyPokemonService service;
     @Autowired
     JsonExtractor extractor;
 
