@@ -28,7 +28,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     public void addUser(User user) throws Exception {
-        if(userRepository.findByUsername(user.getUsername()) != null) {
+        User existingUser = userRepository.findByUsername(user.getUsername());
+        if(existingUser == null) {
             User newUser = new User();
             newUser.setUsername(user.getUsername());
             newUser.setPassword(passwordEncoder.encode(user.getPassword()));

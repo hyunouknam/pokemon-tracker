@@ -32,7 +32,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        //csrf currently disabled to test post methods
+        http.csrf().disable()
+        .authorizeRequests()
                 .antMatchers("/get/my-pokemon").authenticated()
                 .anyRequest().permitAll()
                 .and()
