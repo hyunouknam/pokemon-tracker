@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    CustomUserDetailsService userService;
 
     @PostMapping(value = "/api/register")
     public ResponseEntity postUser(@RequestParam User user) throws Exception {
