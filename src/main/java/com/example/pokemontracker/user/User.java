@@ -7,7 +7,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    long id;
+    private long id;
     @Column(name = "username")
     private String username;
     @Column(name = "password")

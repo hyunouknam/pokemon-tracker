@@ -8,27 +8,27 @@ public class MyPokemon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    long id;
+    private long id;
     @Column(name = "name")
-    String name;
+    private String name;
     @Column(name = "ability")
-    String ability;
+    private String ability;
     @ElementCollection
     @CollectionTable(name = "moves_list", joinColumns = @JoinColumn(name = "id"))
     @Column(name = "moves")
-    List<String> moves;
+    private List<String> moves;
     @Column(name = "hp")
-    int hp;
+    private int hp;
     @Column(name = "attack")
-    int attack;
+    private int attack;
     @Column(name = "defense")
-    int defense;
+    private int defense;
     @Column(name = "special_attack")
-    int special_attack;
+    private int special_attack;
     @Column(name = "special_defense")
-    int special_defense;
+    private int special_defense;
     @Column(name = "speed")
-    int speed;
+    private int speed;
 
     public MyPokemon() {
 

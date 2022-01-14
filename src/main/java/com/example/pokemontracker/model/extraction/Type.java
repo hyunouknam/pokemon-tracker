@@ -8,7 +8,7 @@ import java.util.Map;
 public class Type {
 
     @JsonIgnoreProperties("url")
-    Map<String, String> type;
+    private Map<String, String> type;
 
     public Type() {
 

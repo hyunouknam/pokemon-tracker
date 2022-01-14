@@ -1,20 +1,18 @@
 package com.example.pokemontracker.model.extraction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Pokemon {
 
-    @Id
-    long id;
-    String name;
-    List<Ability> abilities;
-    List<Move> moves;
-    List<Stat> stats;
-    List<Type> types;
+    private long id;
+    private String name;
+    private List<Ability> abilities;
+    private List<Move> moves;
+    private List<Stat> stats;
+    private List<Type> types;
 
     public Pokemon() {
 

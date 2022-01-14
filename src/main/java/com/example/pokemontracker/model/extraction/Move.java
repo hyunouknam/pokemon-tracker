@@ -8,7 +8,7 @@ import java.util.Map;
 public class Move {
 
     @JsonIgnoreProperties(value = "url")
-    Map<String, String> move;
+    private Map<String, String> move;
 
     public Move() {
 

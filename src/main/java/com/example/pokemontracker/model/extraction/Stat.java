@@ -7,10 +7,10 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Stat {
 
-    int base_stat;
-    int effort;
+    private int base_stat;
+    private int effort;
     @JsonIgnoreProperties(value = "url")
-    Map<String, String> stat;
+    private Map<String, String> stat;
 
     public Stat() {
 

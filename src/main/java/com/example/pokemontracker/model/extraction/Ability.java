@@ -7,9 +7,9 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Ability {
 
-    String is_hidden;
+    private String is_hidden;
     @JsonIgnoreProperties(value = "url")
-    Map<String, String> ability;
+    private Map<String, String> ability;
 
     public Ability() {
 
