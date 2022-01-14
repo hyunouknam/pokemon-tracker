@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    CustomUserDetailsService userService;
+    private CustomUserDetailsService userService;
 
     @PostMapping(value = "/api/register")
     public ResponseEntity postUser(@RequestBody User user) throws Exception {

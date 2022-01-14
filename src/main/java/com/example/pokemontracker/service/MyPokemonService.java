@@ -2,6 +2,8 @@ package com.example.pokemontracker.service;
 
 import com.example.pokemontracker.model.MyPokemon;
 import com.example.pokemontracker.persistence.MyPokemonRepository;
+import com.example.pokemontracker.user.CustomUserDetails;
+import com.example.pokemontracker.user.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +13,13 @@ import java.util.List;
 public class MyPokemonService {
 
     @Autowired
-    MyPokemonRepository repository;
+    private MyPokemonRepository repository;
 
-    public void addMyPokemon(MyPokemon myPokemon) {
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
+
+    public void addMyPokemon(MyPokemon myPokemon, CustomUserDetails userDetails) {
+        myPokemon.setUser(userDetails.getUser());
         repository.save(myPokemon);
     }
 

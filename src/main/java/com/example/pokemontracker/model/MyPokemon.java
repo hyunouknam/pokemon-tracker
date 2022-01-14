@@ -1,5 +1,8 @@
 package com.example.pokemontracker.model;
 
+import com.example.pokemontracker.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -29,6 +32,10 @@ public class MyPokemon {
     private int special_defense;
     @Column(name = "speed")
     private int speed;
+    @JsonIgnore
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public MyPokemon() {
 
@@ -125,5 +132,13 @@ public class MyPokemon {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

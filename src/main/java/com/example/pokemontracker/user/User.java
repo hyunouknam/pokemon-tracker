@@ -1,6 +1,9 @@
 package com.example.pokemontracker.user;
 
+import com.example.pokemontracker.model.MyPokemon;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -12,6 +15,8 @@ public class User {
     private String username;
     @Column(name = "password")
     private String password;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<MyPokemon> myPokemons;
 
     public User() {
 
@@ -44,5 +49,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<MyPokemon> getMyPokemons() {
+        return myPokemons;
+    }
+
+    public void setMyPokemon(List<MyPokemon> myPokemons) {
+        this.myPokemons = myPokemons;
     }
 }

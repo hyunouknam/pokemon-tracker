@@ -3,11 +3,14 @@ package com.example.pokemontracker.controller;
 import com.example.pokemontracker.model.extraction.Pokemon;
 import com.example.pokemontracker.model.MyPokemon;
 import com.example.pokemontracker.service.MyPokemonService;
+import com.example.pokemontracker.user.CustomUserDetails;
 import com.example.pokemontracker.util.JsonExtractor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -43,9 +46,9 @@ public class ApiController {
 
 
     @PostMapping(value = "/my-pokemon")
-    public void postMyPokemon(@RequestBody MyPokemon myPokemon) {
+    public void postMyPokemon(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestBody MyPokemon myPokemon) {
         // add nature later
-        service.addMyPokemon(myPokemon);
+        service.addMyPokemon(myPokemon, userDetails);
 
     }
 
