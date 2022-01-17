@@ -53,8 +53,8 @@ public class ApiController {
     }
 
     @GetMapping(value = "/get/my-pokemon")
-    public List<MyPokemon> getMyPokemon() {
-        return service.getAllMyPokemon();
+    public List<MyPokemon> getMyPokemon(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        return service.getAllMyPokemon(userDetails);
     }
 
     @PutMapping(value = "/my-pokemon")

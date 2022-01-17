@@ -1,6 +1,7 @@
 package com.example.pokemontracker.persistence;
 
 import com.example.pokemontracker.model.MyPokemon;
+import com.example.pokemontracker.user.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

@@ -23,8 +23,8 @@ public class MyPokemonService {
         repository.save(myPokemon);
     }
 
-    public List<MyPokemon> getAllMyPokemon() {
-        return repository.findAll();
+    public List<MyPokemon> getAllMyPokemon(CustomUserDetails userDetails) {
+        return repository.findAllByUser(userDetails.getUser());
     }
 
     public void updateMyPokemon(MyPokemon myPokemon) {

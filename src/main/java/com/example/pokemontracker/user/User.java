@@ -1,6 +1,8 @@
 package com.example.pokemontracker.user;
 
 import com.example.pokemontracker.model.MyPokemon;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
