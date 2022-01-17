@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface MyPokemonRepository extends JpaRepository<MyPokemon, Long> {
-    List<MyPokemon> findAllByUser(User user);
+    List<MyPokemon> findAllByUser_Id(Long id);
 }

@@ -63,8 +63,8 @@ public class ApiController {
     }
 
     @DeleteMapping(value = "/my-pokemon")
-    public void deleteMyPokemon(@RequestBody MyPokemon myPokemon) {
-        service.deleteMyPokemon(myPokemon);
+    public void deleteMyPokemon(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestBody MyPokemon myPokemon) {
+        service.deleteMyPokemon(myPokemon, userDetails);
     }
 
 }

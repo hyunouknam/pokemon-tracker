@@ -24,14 +24,17 @@ public class MyPokemonService {
     }
 
     public List<MyPokemon> getAllMyPokemon(CustomUserDetails userDetails) {
-        return repository.findAllByUser(userDetails.getUser());
+        return repository.findAllByUser_Id(userDetails.getUser().getId());
     }
 
     public void updateMyPokemon(MyPokemon myPokemon) {
         repository.save(myPokemon);
     }
 
-    public void deleteMyPokemon(MyPokemon myPokemon) {
-        repository.deleteById(myPokemon.getId());
+    public void deleteMyPokemon(MyPokemon myPokemon, CustomUserDetails userDetails) {
+        MyPokemon currentPokemon = repository.getById(myPokemon.getId());
+        if(currentPokemon.getUser().getId() == userDetails.getUser().getId()){
+            repository.deleteById(myPokemon.getId());
+        }
     }
 }
