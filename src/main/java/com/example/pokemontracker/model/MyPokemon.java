@@ -32,6 +32,8 @@ public class MyPokemon {
     private int special_defense;
     @Column(name = "speed")
     private int speed;
+    @Column(name = "held_item")
+    private String heldItem;
     @JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -42,7 +44,7 @@ public class MyPokemon {
     }
 
     public MyPokemon(String name, String ability, List<String> moves,
-                     int hp, int attack, int defense, int special_attack, int special_defense, int speed) {
+                     int hp, int attack, int defense, int special_attack, int special_defense, int speed, String heldItem) {
         this.name = name;
         this.ability = ability;
         this.moves = moves;
@@ -52,6 +54,7 @@ public class MyPokemon {
         this.special_attack = special_attack;
         this.special_defense = special_defense;
         this.speed = speed;
+        this.heldItem = heldItem;
     }
 
     public long getId() {
@@ -140,5 +143,13 @@ public class MyPokemon {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getHeldItem() {
+        return heldItem;
+    }
+
+    public void setHeldItem(String heldItem) {
+        this.heldItem = heldItem;
     }
 }

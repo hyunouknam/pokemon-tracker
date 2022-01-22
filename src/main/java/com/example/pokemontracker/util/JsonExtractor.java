@@ -24,7 +24,7 @@ public class JsonExtractor {
 
     public List<String> getPokemonNames() {
 
-        String url = "https://pokeapi.co/api/v2/pokemon?limit=896";
+        String url = "https://pokeapi.co/api/v2/pokemon?limit=1118";
         String pokemonJSON = restTemplate.getForObject(url, String.class);
         JSONObject pokemonJSONObj = new JSONObject(pokemonJSON);
         JSONArray pokemonArr = pokemonJSONObj.getJSONArray("results");
