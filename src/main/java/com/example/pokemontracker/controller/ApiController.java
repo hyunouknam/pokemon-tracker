@@ -24,8 +24,6 @@ public class ApiController {
 
     @GetMapping(value = "/pokemon-list")
     public List<String> getPokemonList() {
-        // might check if pokemon exists in cache(arraylist) so that it doesn't unnecessarily do another API call
-
         List<String> pokemonNames = extractor.getPokemonNames();
 
         return pokemonNames;
@@ -44,6 +42,12 @@ public class ApiController {
         return pokemon;
     }
 
+    @GetMapping(value = "/item-list")
+    public List<String> getItemList() {
+        List<String> itemNames = extractor.getHoldableItems();
+
+        return itemNames;
+    }
 
     @PostMapping(value = "/my-pokemon")
     public void postMyPokemon(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestBody MyPokemon myPokemon) {

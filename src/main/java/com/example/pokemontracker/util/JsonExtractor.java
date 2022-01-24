@@ -60,23 +60,17 @@ public class JsonExtractor {
         return pokemon;
     }
 
-    /*
-    public List<String> getGenFourPokemonNames() {
+    public List<String> getHoldableItems() {
+        String url = "https://pokeapi.co/api/v2/item-attribute/holdable";
+        String itemJSON = restTemplate.getForObject(url, String.class);
+        JSONObject itemJSONObj = new JSONObject(itemJSON);
+        JSONArray itemArr = itemJSONObj.getJSONArray("items");
 
-        // Consume pokemon generation to get pokemon species
-        RestTemplate restTemplate = new RestTemplate();
-        String url = "https://pokeapi.co/api/v2/generation/generation-iv/";
-        String pokemonGeneration = restTemplate.getForObject(url, String.class);
-        JSONObject pokemonGenerationJSONObj = new JSONObject(pokemonGeneration);
-        JSONArray pokemonSpecies = pokemonGenerationJSONObj.getJSONArray("pokemon_species");
-
-        // Extract pokemon species to get the names to separately call individual pokemon API calls later
-        List<String> pokemonNames = new ArrayList<>();
-        for(int i = 0; i < pokemonSpecies.length(); i++) {
-            pokemonNames.add(pokemonSpecies.getJSONObject(i).getString("name"));
+        List<String> itemNames = new ArrayList<>();
+        for(int i = 0; i < itemArr.length(); i++) {
+            itemNames.add(itemArr.getJSONObject(i).getString("name"));
         }
 
-        return pokemonNames;
+        return itemNames;
     }
-     */
 }
