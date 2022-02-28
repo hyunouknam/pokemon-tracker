@@ -1,16 +1,17 @@
 import { DetailedPopUp, Navbar, Pokemon } from './components';
 import pokemonService from './services/PokemonService';
 import { useState, useEffect } from 'react';
+import "./app.css";
 
 
 function App() {
 
-  const [pokemonNameList, setNamePokemonList] = useState([]);
+  const [pokemonNamesList, setPokemonNamesList] = useState([]);
 
   useEffect(() => {
     const getPokemons = async () => {
-      const response = await pokemonService.getPokemonList();
-      setNamePokemonList(response.data);
+      const response = await pokemonService.getPokemonNamesList();
+      setPokemonNamesList(response.data);
     };
 
     getPokemons();
@@ -21,7 +22,9 @@ function App() {
       <Navbar />
       <div className='pokemonList'>
         {
-          pokemonNameList.map((pokemon) => <div key={pokemon}>{pokemon}</div>)
+          pokemonNamesList.map((pokemon) =>
+            <Pokemon key={pokemon} name={pokemon} />
+          )
         }
       </div>
     </>

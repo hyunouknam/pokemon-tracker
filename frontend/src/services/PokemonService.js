@@ -4,11 +4,11 @@ const POKEMONS_REST_API_URL = 'http://localhost:8080/pokemon-list';
 const POKEMONS_REST_API_URL_TEST = 'http://localhost:8080/pokemon-list-test';
 const POKEMON_INFO_REST_API_URL = 'http://localhost:8080/pokemon-info';
 
-const getPokemonList = () => {
+const getPokemonNamesList = () => {
   return axios.get(POKEMONS_REST_API_URL_TEST);
 };
 
-export default { getPokemonList };
+export default { getPokemonNamesList };
 
 
 

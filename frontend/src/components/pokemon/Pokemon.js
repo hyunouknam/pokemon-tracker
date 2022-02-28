@@ -1,8 +1,8 @@
 import './pokemon.css';
 
-const Pokemon = () => {
+const Pokemon = ({ name }) => {
   return (
-    <div>Pokemon</div>
+    <div>{name}</div>
   )
 }
 
