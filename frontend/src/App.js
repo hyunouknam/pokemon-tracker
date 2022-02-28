@@ -20,11 +20,9 @@ function App() {
     <>
       <Navbar />
       <div className='pokemonList'>
-        <ul>
-          {
-            pokemonList.map((pokemon) => <li key={pokemon}>{pokemon}</li>)
-          }
-        </ul>
+        {
+          pokemonList.map((pokemon) => <div key={pokemon}>{pokemon}</div>)
+        }
       </div>
     </>
   );

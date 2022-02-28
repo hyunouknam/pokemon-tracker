@@ -29,6 +29,13 @@ public class ApiController {
         return pokemonNames;
     }
 
+    @GetMapping(value = "/pokemon-list-test")
+    public List<String> getPokemonListTest() {
+        List<String> pokemonNames = extractor.getPokemonNamesTest();
+
+        return pokemonNames;
+    }
+
     @GetMapping(value = "/pokemon-info")
     public Pokemon getPokemon(@RequestParam String name) {
         Pokemon pokemon = new Pokemon();

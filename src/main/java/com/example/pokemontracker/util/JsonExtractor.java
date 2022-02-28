@@ -37,6 +37,21 @@ public class JsonExtractor {
         return pokemonNames;
     }
 
+    public List<String> getPokemonNamesTest() {
+
+        String url = "https://pokeapi.co/api/v2/pokemon?limit=50";
+        String pokemonJSON = restTemplate.getForObject(url, String.class);
+        JSONObject pokemonJSONObj = new JSONObject(pokemonJSON);
+        JSONArray pokemonArr = pokemonJSONObj.getJSONArray("results");
+
+        List<String> pokemonNames = new ArrayList<>();
+        for(int i = 0; i < pokemonArr.length(); i++) {
+            pokemonNames.add(pokemonArr.getJSONObject(i).getString("name"));
+        }
+
+        return pokemonNames;
+    }
+
     public Map<String, Pokemon> getAllPokemonInfo(List<String> pokemonNames) throws JsonProcessingException {
         Map<String, Pokemon> pokemons = new HashMap<>();
         ObjectMapper objectMapper = new ObjectMapper();
