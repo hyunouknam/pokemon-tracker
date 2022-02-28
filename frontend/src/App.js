@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-  const [pokemonList, setPokemonList] = useState([]);
+  const [pokemonNameList, setNamePokemonList] = useState([]);
 
   useEffect(() => {
     const getPokemons = async () => {
       const response = await pokemonService.getPokemonList();
-      setPokemonList(response.data);
+      setNamePokemonList(response.data);
     };
 
     getPokemons();
@@ -21,7 +21,7 @@ function App() {
       <Navbar />
       <div className='pokemonList'>
         {
-          pokemonList.map((pokemon) => <div key={pokemon}>{pokemon}</div>)
+          pokemonNameList.map((pokemon) => <div key={pokemon}>{pokemon}</div>)
         }
       </div>
     </>
