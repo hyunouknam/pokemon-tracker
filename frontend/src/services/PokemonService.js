@@ -8,14 +8,14 @@ const getPokemonNamesList = () => {
   return axios.get(POKEMONS_REST_API_URL_TEST);
 };
 
-export default { getPokemonNamesList };
+const getPokemonInfo = (pokemonName) => {
+  return axios.get(POKEMON_INFO_REST_API_URL, {
+    params: {
+      name: pokemonName
+    }
+  });
+}
+
+export default { getPokemonNamesList, getPokemonInfo };
 
 
-
-    // getPokemonInfo(pokemonName) {
-    //     return axios.get(POKEMON_INFO_REST_API_URL, {
-    //         params: {
-    //           name: pokemonName
-    //         }
-    //       });
-    // }
