@@ -1,8 +1,12 @@
 import PokemonComponent from './components/PokemonComponent';
+import { DetailedPopUp, Navbar, Pokemon } from './components';
 
 function App() {
   return (
-    <PokemonComponent />
+    <>
+      <Navbar />
+      <Pokemon />
+    </>
   );
 }
 
