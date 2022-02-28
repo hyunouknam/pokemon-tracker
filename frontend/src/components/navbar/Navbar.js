@@ -2,7 +2,11 @@ import './navbar.css';
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <div className='Navbar'>
+      <div>Pokemon List</div>
+      <div>My Box</div>
+      <div>Login</div>
+    </div>
   )
 }
 
