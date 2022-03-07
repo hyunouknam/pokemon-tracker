@@ -4,7 +4,7 @@ import pokemonService from '../../services/PokemonService';
 
 const POKEMON_ARTWORK_BASE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
 
-const Pokemon = ({ name }) => {
+const Pokemon = ({ name, openModal }) => {
 
   const [pokemon, setPokemon] = useState({});
 
@@ -19,9 +19,17 @@ const Pokemon = ({ name }) => {
 
 
   return (
-    <div className='pokemon'>
-      <img src={`${POKEMON_ARTWORK_BASE_URL}${pokemon.id}.png`} alt={name}></img>
-    </div >
+    <>
+      {
+        (
+          <>
+            <div className='pokemon' onClick={openModal}>
+              <img src={`${POKEMON_ARTWORK_BASE_URL}${pokemon.id}.png`} alt={name}></img>
+            </div >
+          </>
+        )
+      }
+    </>
   )
 }
 

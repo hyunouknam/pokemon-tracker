@@ -7,6 +7,7 @@ import "./app.css";
 function App() {
 
   const [pokemonNamesList, setPokemonNamesList] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const getPokemons = async () => {
@@ -17,16 +18,32 @@ function App() {
     getPokemons();
   }, []);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <Navbar />
       <div className='pokemonList'>
         {
           pokemonNamesList.map((pokemon) =>
-            <Pokemon key={pokemon} name={pokemon} />
+            <Pokemon
+              key={pokemon}
+              name={pokemon}
+              openModal={openModal}
+            />
           )
         }
       </div>
+      <DetailedPopUp
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+      />
     </>
   );
 }
