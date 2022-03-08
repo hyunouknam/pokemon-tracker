@@ -23,7 +23,7 @@ const Pokemon = ({ name, openModal }) => {
       {
         (
           <>
-            <div className='pokemon' onClick={openModal}>
+            <div className='pokemon' onClick={() => openModal(pokemon)}>
               <img src={`${POKEMON_ARTWORK_BASE_URL}${pokemon.id}.png`} alt={name}></img>
             </div >
           </>

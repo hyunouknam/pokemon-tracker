@@ -8,6 +8,7 @@ function App() {
 
   const [pokemonNamesList, setPokemonNamesList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentPokemon, setCurrentPokemon] = useState({});
 
   useEffect(() => {
     const getPokemons = async () => {
@@ -18,7 +19,8 @@ function App() {
     getPokemons();
   }, []);
 
-  const openModal = () => {
+  const openModal = (pokemon) => {
+    setCurrentPokemon(pokemon);
     setIsModalOpen(true);
   };
 
@@ -41,6 +43,7 @@ function App() {
         }
       </div>
       <DetailedPopUp
+        currentPokemon={currentPokemon}
         isModalOpen={isModalOpen}
         closeModal={closeModal}
       />
