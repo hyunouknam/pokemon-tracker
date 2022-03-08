@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
 import './navbar.css';
 
 const Navbar = () => {
   return (
     <div className='Navbar'>
-      <div>Pokemon List</div>
-      <div>My Box</div>
-      <div>Login</div>
+      <Link to="/">Home</Link>
+      <Link to="/my-box">My Box</Link>
+      <Link to="/login">Login</Link>
     </div>
   )
 }

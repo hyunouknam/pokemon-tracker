@@ -1,6 +1,8 @@
-import { DetailedPopUp, Navbar, Pokemon } from './components';
+import { DetailedPopUp, Navbar } from './components';
+import { Home, MyBox, Login } from './pages';
 import pokemonService from './services/PokemonService';
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./app.css";
 
 
@@ -29,25 +31,33 @@ function App() {
   };
 
   return (
-    <>
+    <Router>
       <Navbar />
-      <div className='pokemonList'>
-        {
-          pokemonNamesList.map((pokemon) =>
-            <Pokemon
-              key={pokemon}
-              name={pokemon}
+      <Routes>
+        <Route
+          path='/my-box'
+          element={<MyBox />}
+        />
+        <Route
+          path='/login'
+          element={<Login />}
+        />
+        <Route
+          path='/'
+          element={
+            <Home
+              pokemonNamesList={pokemonNamesList}
               openModal={openModal}
             />
-          )
-        }
-      </div>
+          }
+        />
+      </Routes>
       <DetailedPopUp
         currentPokemon={currentPokemon}
         isModalOpen={isModalOpen}
         closeModal={closeModal}
       />
-    </>
+    </Router>
   );
 }
 
