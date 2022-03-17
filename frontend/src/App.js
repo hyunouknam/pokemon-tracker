@@ -4,6 +4,7 @@ import pokemonService from './services/PokemonService';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./app.css";
+import userService from './services/UserService';
 
 
 function App() {
@@ -30,6 +31,12 @@ function App() {
     setIsModalOpen(false);
   };
 
+  const handleLoginSubmit = async () => {
+    // const token = await userService.getUserToken();
+    // redirect page to home
+    // change navbar login to logout
+  };
+
   return (
     <Router>
       <Navbar />
@@ -40,7 +47,10 @@ function App() {
         />
         <Route
           path='/login'
-          element={<Login />}
+          element={
+            <Login
+              handleLoginSubmit={handleLoginSubmit}
+            />}
         />
         <Route
           path='/'
