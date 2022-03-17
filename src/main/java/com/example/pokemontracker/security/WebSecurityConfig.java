@@ -1,5 +1,6 @@
-package com.example.pokemontracker.user;
+package com.example.pokemontracker.security;
 
+import com.example.pokemontracker.user.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
