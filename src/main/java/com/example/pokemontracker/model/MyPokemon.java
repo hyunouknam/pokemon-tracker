@@ -17,6 +17,10 @@ public class MyPokemon {
     @Column(name = "ability")
     private String ability;
     @ElementCollection
+    @CollectionTable(name = "types_list", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "types")
+    private List<String> types;
+    @ElementCollection
     @CollectionTable(name = "moves_list", joinColumns = @JoinColumn(name = "id"))
     @Column(name = "moves")
     private List<String> moves;
@@ -43,11 +47,12 @@ public class MyPokemon {
 
     }
 
-    public MyPokemon(String name, String ability, List<String> moves,
+    public MyPokemon(String name, String ability, List<String> moves, List<String> types,
                      int hp, int attack, int defense, int special_attack, int special_defense, int speed, String heldItem) {
         this.name = name;
         this.ability = ability;
         this.moves = moves;
+        this.types = types;
         this.hp = hp;
         this.attack = attack;
         this.defense = defense;
@@ -151,5 +156,13 @@ public class MyPokemon {
 
     public void setHeldItem(String heldItem) {
         this.heldItem = heldItem;
+    }
+
+    public List<String> getTypes() {
+        return types;
+    }
+
+    public void setTypes(List<String> types) {
+        this.types = types;
     }
 }
