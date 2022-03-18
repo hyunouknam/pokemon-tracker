@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/api")
 @CrossOrigin("http://localhost:3000/")
 public class ApiController {
 
@@ -21,21 +22,21 @@ public class ApiController {
     @Autowired
     JsonExtractor extractor;
 
-    @GetMapping(value = "/pokemon-list")
+    @GetMapping(value = "/get/pokemon-list")
     public List<String> getPokemonList() {
         List<String> pokemonNames = extractor.getPokemonNames();
 
         return pokemonNames;
     }
 
-    @GetMapping(value = "/pokemon-list-test")
+    @GetMapping(value = "/get/pokemon-list-test")
     public List<String> getPokemonListTest() {
         List<String> pokemonNames = extractor.getPokemonNamesTest();
 
         return pokemonNames;
     }
 
-    @GetMapping(value = "/pokemon-info")
+    @GetMapping(value = "/get/pokemon-info")
     public Pokemon getPokemon(@RequestParam String name) {
         Pokemon pokemon = new Pokemon();
 
@@ -48,14 +49,14 @@ public class ApiController {
         return pokemon;
     }
 
-    @GetMapping(value = "/item-list")
+    @GetMapping(value = "/get/item-list")
     public List<String> getItemList() {
         List<String> itemNames = extractor.getHoldableItems();
 
         return itemNames;
     }
 
-    @PostMapping(value = "/my-pokemon")
+    @PostMapping(value = "/post/my-pokemon")
     public void postMyPokemon(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestBody MyPokemon myPokemon) {
         // add nature later
         service.addMyPokemon(myPokemon, userDetails);
@@ -67,12 +68,12 @@ public class ApiController {
         return service.getAllMyPokemon();
     }
 
-    @PutMapping(value = "/my-pokemon")
+    @PutMapping(value = "/update/my-pokemon")
     public void putMyPokemon(@RequestBody MyPokemon myPokemon) {
         service.updateMyPokemon(myPokemon);
     }
 
-    @DeleteMapping(value = "/my-pokemon")
+    @DeleteMapping(value = "/delete/my-pokemon")
     public void deleteMyPokemon(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestBody MyPokemon myPokemon) {
         service.deleteMyPokemon(myPokemon, userDetails);
     }

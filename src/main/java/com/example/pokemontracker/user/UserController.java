@@ -7,12 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping(value = "/api")
 public class UserController {
 
     @Autowired
     private CustomUserDetailsService userService;
 
-    @PostMapping(value = "/api/register")
+    @PostMapping(value = "/register")
     public ResponseEntity postUser(@RequestBody User user) throws Exception {
         try {
             userService.addUser(user);
@@ -23,7 +24,7 @@ public class UserController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PostMapping(value = "/api/login")
+    @PostMapping(value = "/login")
     public ResponseEntity loginUser(@RequestBody User user) {
 
         return new ResponseEntity(HttpStatus.OK);
