@@ -57,9 +57,9 @@ public class ApiController {
     }
 
     @PostMapping(value = "/post/my-pokemon")
-    public void postMyPokemon(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestBody MyPokemon myPokemon) {
+    public void postMyPokemon(@RequestBody MyPokemon myPokemon) {
         // add nature later
-        service.addMyPokemon(myPokemon, userDetails);
+        service.addMyPokemon(myPokemon);
 
     }
 
@@ -74,8 +74,8 @@ public class ApiController {
     }
 
     @DeleteMapping(value = "/delete/my-pokemon")
-    public void deleteMyPokemon(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestBody MyPokemon myPokemon) {
-        service.deleteMyPokemon(myPokemon, userDetails);
+    public void deleteMyPokemon(@RequestBody MyPokemon myPokemon) {
+        service.deleteMyPokemon(myPokemon);
     }
 
 }

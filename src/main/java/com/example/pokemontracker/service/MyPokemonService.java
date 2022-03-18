@@ -20,25 +20,34 @@ public class MyPokemonService {
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
-    public void addMyPokemon(MyPokemon myPokemon, CustomUserDetails userDetails) {
-        myPokemon.setUser(userDetails.getUser());
+    public void addMyPokemon(MyPokemon myPokemon) {
+        myPokemon.setUser(getCurrentUserDetails().getUser());
         repository.save(myPokemon);
     }
 
     public List<MyPokemon> getAllMyPokemon() {
-        String userPrincipal = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        CustomUserDetails userDetails = (CustomUserDetails) userDetailsService.loadUserByUsername(userPrincipal);
-        return repository.findAllByUser_Id(userDetails.getUser().getId());
+        return repository.findAllByUser_Id(getCurrentUserDetails().getUser().getId());
     }
 
     public void updateMyPokemon(MyPokemon myPokemon) {
-        repository.save(myPokemon);
+        MyPokemon currentPokemon = repository.getById(myPokemon.getId());
+        if(currentPokemon.getUser().getId() == getCurrentUserDetails().getUser().getId()){
+            myPokemon.setUser(getCurrentUserDetails().getUser());
+            repository.save(myPokemon);
+        }
     }
 
-    public void deleteMyPokemon(MyPokemon myPokemon, CustomUserDetails userDetails) {
+    public void deleteMyPokemon(MyPokemon myPokemon) {
         MyPokemon currentPokemon = repository.getById(myPokemon.getId());
-        if(currentPokemon.getUser().getId() == userDetails.getUser().getId()){
+        if(currentPokemon.getUser().getId() == getCurrentUserDetails().getUser().getId()){
             repository.deleteById(myPokemon.getId());
         }
+    }
+
+    // helper function to get current logged user
+    private CustomUserDetails getCurrentUserDetails() {
+        String userPrincipal = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        CustomUserDetails userDetails = (CustomUserDetails) userDetailsService.loadUserByUsername(userPrincipal);
+        return userDetails;
     }
 }
