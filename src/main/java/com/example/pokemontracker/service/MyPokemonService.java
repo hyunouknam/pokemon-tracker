@@ -5,6 +5,7 @@ import com.example.pokemontracker.persistence.MyPokemonRepository;
 import com.example.pokemontracker.user.CustomUserDetails;
 import com.example.pokemontracker.user.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +24,9 @@ public class MyPokemonService {
         repository.save(myPokemon);
     }
 
-    public List<MyPokemon> getAllMyPokemon(CustomUserDetails userDetails) {
+    public List<MyPokemon> getAllMyPokemon() {
+        // fix, the below line returns null
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return repository.findAllByUser_Id(userDetails.getUser().getId());
     }
 

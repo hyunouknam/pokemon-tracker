@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -64,8 +63,8 @@ public class ApiController {
     }
 
     @GetMapping(value = "/get/my-pokemon")
-    public List<MyPokemon> getMyPokemon(@AuthenticationPrincipal CustomUserDetails userDetails) {
-        return service.getAllMyPokemon(userDetails);
+    public List<MyPokemon> getMyPokemon() {
+        return service.getAllMyPokemon();
     }
 
     @PutMapping(value = "/my-pokemon")

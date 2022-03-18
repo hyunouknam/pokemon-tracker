@@ -23,4 +23,10 @@ public class UserController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @PostMapping(value = "/api/login")
+    public ResponseEntity loginUser(@RequestBody User user) {
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }
