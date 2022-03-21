@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //csrf currently disabled to test post methods
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/login", SIGN_UP_URL).permitAll()
+                .antMatchers("/api/login", "/api/get/pokemon-list-test", "/api/get/pokemon-list-test","/api/get/pokemon-info**", SIGN_UP_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
