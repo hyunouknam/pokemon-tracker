@@ -20,14 +20,14 @@ const Pokemon = ({ name, openModal }) => {
 
   return (
     <>
-      {
+      {Object.keys(pokemon).length !== 0 ?
         (
           <>
             <div className='pokemon' onClick={() => openModal(pokemon)}>
               <img src={`${POKEMON_ARTWORK_BASE_URL}${pokemon.id}.png`} alt={name}></img>
             </div >
           </>
-        )
+        ) : <></>
       }
     </>
   )
