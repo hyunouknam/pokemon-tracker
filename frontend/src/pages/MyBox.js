@@ -8,7 +8,6 @@ const MyBox = ({ token }) => {
 
   useEffect(() => {
     const getMyPokemonList = async () => {
-      console.log(token);
       const response = await pokemonService.getMyPokemon(token);
       setMyPokemonList(response.data);
     }
