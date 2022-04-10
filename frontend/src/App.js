@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./app.css";
 import userService from './services/UserService';
+import { useNavigate } from 'react-router-dom';
 
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
   const [currentPokemon, setCurrentPokemon] = useState({});
   const [user, setUser] = useState("");
   const [token, setToken] = useState("");
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     const getPokemons = async () => {
@@ -34,7 +37,6 @@ function App() {
   };
 
   const handleLoginSubmit = async (username, password, event) => {
-    // const token = await userService.getUserToken();
     // redirect page to home
     // change navbar login to logout
     event.preventDefault();
@@ -42,15 +44,19 @@ function App() {
     const responseArr = response.data.split(" ");
     setUser(responseArr[0]);
     setToken(responseArr[1]);
+    navigate("/");
   };
 
   return (
-    <Router>
+    <>
       <Navbar />
       <Routes>
         <Route
           path='/my-box'
-          element={<MyBox />}
+          element={
+            <MyBox
+              token={token}
+            />}
         />
         <Route
           path='/login'
@@ -74,7 +80,7 @@ function App() {
         isModalOpen={isModalOpen}
         closeModal={closeModal}
       />
-    </Router>
+    </>
   );
 }
 
