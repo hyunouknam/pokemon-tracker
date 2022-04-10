@@ -1,10 +1,10 @@
 import React from 'react'
 import LoginForm from '../components/login/LoginForm'
 
-const Login = () => {
+const Login = ({ handleLoginSubmit }) => {
   return (
     <div>
-      <LoginForm />
+      <LoginForm handleLoginSubmit={handleLoginSubmit} />
     </div>
   )
 }

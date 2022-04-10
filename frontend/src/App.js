@@ -12,6 +12,8 @@ function App() {
   const [pokemonNamesList, setPokemonNamesList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPokemon, setCurrentPokemon] = useState({});
+  const [user, setUser] = useState("");
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     const getPokemons = async () => {
@@ -31,10 +33,15 @@ function App() {
     setIsModalOpen(false);
   };
 
-  const handleLoginSubmit = async () => {
+  const handleLoginSubmit = async (username, password, event) => {
     // const token = await userService.getUserToken();
     // redirect page to home
     // change navbar login to logout
+    event.preventDefault();
+    const response = await userService.loginUser(username, password);
+    const responseArr = response.data.split(" ");
+    setUser(responseArr[0]);
+    setToken(responseArr[1]);
   };
 
   return (
