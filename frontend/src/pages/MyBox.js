@@ -17,17 +17,17 @@ const MyBox = ({ token, openModal }) => {
   }, [])
 
   return (
-    <>
+    <div className='pokemonList'>
       {
         myPokemonList.map((pokemon) =>
           <MyPokemon
-            key={pokemon.id}
+            key={pokemon.pokemonId}
             pokemon={pokemon}
             openModal={openModal}
           />
         )
       }
-    </>
+    </div>
   )
 }
 

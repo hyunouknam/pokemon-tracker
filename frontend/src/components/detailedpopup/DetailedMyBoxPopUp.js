@@ -12,7 +12,7 @@ const DetailedMyBoxPopUp = ({ currentPokemon, isModalOpen, closeModal }) => {
       <div className='overlay' />
       <div className='popup'>
         <div className='pokemon_image'>
-          <img src={`${POKEMON_ARTWORK_BASE_URL}${currentPokemon.id}.png`} alt={currentPokemon.name} />
+          <img src={`${POKEMON_ARTWORK_BASE_URL}${currentPokemon.pokemonId}.png`} alt={currentPokemon.name} />
         </div>
         <div className='pokemon_name'>
           {
@@ -22,24 +22,13 @@ const DetailedMyBoxPopUp = ({ currentPokemon, isModalOpen, closeModal }) => {
         <div className='pokemon_type'>
           {
             currentPokemon.types.map((type) =>
-              <p key={type.type.name}>{type.type.name}</p>
+              <p key={type}>{type}</p>
             )
           }
         </div>
         <div className='pokemon_abilities'>
           {
-            currentPokemon.abilities.map((ability) =>
-              <p key={ability.ability.name}>{ability.ability.name}</p>
-            )
-          }
-        </div>
-        <div className='pokemon_stat'>
-          {
-            currentPokemon.stats.map((stat) =>
-              <div key={stat.stat.name}>
-                <p>{stat.stat.name}: {stat.base_stat}</p>
-              </div>
-            )
+            currentPokemon.ability
           }
         </div>
         <button onClick={closeModal}>Close</button>

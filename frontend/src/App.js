@@ -39,11 +39,11 @@ function App() {
 
   const openMyBoxModal = (pokemon) => {
     setCurrentPokemon(pokemon);
-    setIsHomeModalOpen(true);
+    setIsMyBoxModalOpen(true);
   };
 
   const closeMyBoxModal = () => {
-    setIsHomeModalOpen(false);
+    setIsMyBoxModalOpen(false);
   };
 
   const handleLoginSubmit = async (username, password, event) => {

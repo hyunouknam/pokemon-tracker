@@ -12,6 +12,8 @@ public class MyPokemon {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+    @Column(name = "pokemonId")
+    private long pokemonId;
     @Column(name = "name")
     private String name;
     @Column(name = "ability")
@@ -47,7 +49,7 @@ public class MyPokemon {
 
     }
 
-    public MyPokemon(String name, String ability, List<String> moves, List<String> types,
+    public MyPokemon(long pokemonId, String name, String ability, List<String> moves, List<String> types,
                      int hp, int attack, int defense, int special_attack, int special_defense, int speed, String heldItem) {
         this.name = name;
         this.ability = ability;
@@ -68,6 +70,14 @@ public class MyPokemon {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getPokemonId() {
+        return pokemonId;
+    }
+
+    public void setPokemonId(long pokemonId) {
+        this.pokemonId = pokemonId;
     }
 
     public String getName() {
