@@ -1,4 +1,4 @@
-import { DetailedPopUp, Navbar } from './components';
+import { DetailedHomePopUp, DetailedMyBoxPopUp, Navbar } from './components';
 import { Home, MyBox, Login } from './pages';
 import pokemonService from './services/PokemonService';
 import { useState, useEffect } from 'react';
@@ -11,7 +11,8 @@ import { useNavigate } from 'react-router-dom';
 function App() {
 
   const [pokemonNamesList, setPokemonNamesList] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isHomeModalOpen, setIsHomeModalOpen] = useState(false);
+  const [isMyBoxModalOpen, setIsMyBoxModalOpen] = useState(false);
   const [currentPokemon, setCurrentPokemon] = useState({});
   const [user, setUser] = useState("");
   const [token, setToken] = useState("");
@@ -27,13 +28,22 @@ function App() {
     getPokemons();
   }, []);
 
-  const openModal = (pokemon) => {
+  const openHomeModal = (pokemon) => {
     setCurrentPokemon(pokemon);
-    setIsModalOpen(true);
+    setIsHomeModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeHomeModal = () => {
+    setIsHomeModalOpen(false);
+  };
+
+  const openMyBoxModal = (pokemon) => {
+    setCurrentPokemon(pokemon);
+    setIsHomeModalOpen(true);
+  };
+
+  const closeMyBoxModal = () => {
+    setIsHomeModalOpen(false);
   };
 
   const handleLoginSubmit = async (username, password, event) => {
@@ -56,6 +66,7 @@ function App() {
           element={
             <MyBox
               token={token}
+              openModal={openMyBoxModal}
             />}
         />
         <Route
@@ -70,15 +81,20 @@ function App() {
           element={
             <Home
               pokemonNamesList={pokemonNamesList}
-              openModal={openModal}
+              openModal={openHomeModal}
             />
           }
         />
       </Routes>
-      <DetailedPopUp
+      <DetailedHomePopUp
         currentPokemon={currentPokemon}
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
+        isModalOpen={isHomeModalOpen}
+        closeModal={closeHomeModal}
+      />
+      <DetailedMyBoxPopUp
+        currentPokemon={currentPokemon}
+        isModalOpen={isMyBoxModalOpen}
+        closeModal={closeMyBoxModal}
       />
     </>
   );

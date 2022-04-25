@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 
 const POKEMON_ARTWORK_BASE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
 
-const DetailedPopUp = ({ currentPokemon, isModalOpen, closeModal }) => {
+const DetailedMyBoxPopUp = ({ currentPokemon, isModalOpen, closeModal }) => {
   if (isModalOpen !== true)
     return null;
 
@@ -26,6 +26,13 @@ const DetailedPopUp = ({ currentPokemon, isModalOpen, closeModal }) => {
             )
           }
         </div>
+        <div className='pokemon_abilities'>
+          {
+            currentPokemon.abilities.map((ability) =>
+              <p key={ability.ability.name}>{ability.ability.name}</p>
+            )
+          }
+        </div>
         <div className='pokemon_stat'>
           {
             currentPokemon.stats.map((stat) =>
@@ -38,8 +45,8 @@ const DetailedPopUp = ({ currentPokemon, isModalOpen, closeModal }) => {
         <button onClick={closeModal}>Close</button>
       </div>
     </>,
-    document.getElementById('portal')
+    document.getElementById('mybox_pokemon_portal')
   )
 }
 
-export default DetailedPopUp
+export default DetailedMyBoxPopUp

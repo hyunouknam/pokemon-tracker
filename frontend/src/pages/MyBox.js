@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import pokemonService from '../services/PokemonService';
+import { MyPokemon } from '../components';
 
-const MyBox = ({ token }) => {
+const MyBox = ({ token, openModal }) => {
 
   const [myPokemonList, setMyPokemonList] = useState([]);
 
@@ -19,7 +20,11 @@ const MyBox = ({ token }) => {
     <>
       {
         myPokemonList.map((pokemon) =>
-          <div> {JSON.stringify(pokemon)} </div>
+          <MyPokemon
+            key={pokemon.id}
+            pokemon={pokemon}
+            openModal={openModal}
+          />
         )
       }
     </>
