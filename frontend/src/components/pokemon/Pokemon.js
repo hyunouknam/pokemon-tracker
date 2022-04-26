@@ -17,6 +17,9 @@ const Pokemon = ({ name, openModal }) => {
       const abilities = response.data.abilities.map(ability => {
         return { value: ability.ability.name, label: ability.ability.name };
       });
+      const moves = response.data.moves.map(moves => {
+        return { value: moves.move.name, label: moves.move.name };
+      });
 
       setPokemon(prev =>
       ({
@@ -25,10 +28,9 @@ const Pokemon = ({ name, openModal }) => {
         name: response.data.name,
         types: types,
         abilities: abilities,
-        stats: response.data.stats
-
+        stats: response.data.stats,
+        moves: moves,
       }));
-      console.log(response.data)
     }
 
     getPokemonInfo();

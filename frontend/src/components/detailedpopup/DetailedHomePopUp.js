@@ -32,12 +32,24 @@ const DetailedHomePopUp = ({ currentPokemon, isModalOpen, closeModal }) => {
             </>
           }
         </div>
-        <div className='pokemon_abilities'>
+        <div className='pokemon_ability'>
           {
             <>
               <p>Ability:</p>
               <Select options={currentPokemon.abilities}
                 filterOption={createFilter({ ignoreAccents: false })}
+              />
+            </>
+          }
+        </div>
+        <div className='pokemon_move'>
+          {
+            <>
+              <p>Moves:</p>
+              <Select options={currentPokemon.moves}
+                filterOption={createFilter({ ignoreAccents: false })}
+                isMulti
+                menuPlacement="top"
               />
             </>
           }
