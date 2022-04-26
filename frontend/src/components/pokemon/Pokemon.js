@@ -11,7 +11,24 @@ const Pokemon = ({ name, openModal }) => {
   useEffect(() => {
     const getPokemonInfo = async () => {
       const response = await pokemonService.getPokemonInfo(name);
-      setPokemon(response.data);
+      const types = response.data.types.map(type => {
+        return { value: type.type.name, label: type.type.name };
+      });
+      const abilities = response.data.abilities.map(ability => {
+        return { value: ability.ability.name, label: ability.ability.name };
+      });
+
+      setPokemon(prev =>
+      ({
+        ...prev,
+        id: response.data.id,
+        name: response.data.name,
+        types: types,
+        abilities: abilities,
+        stats: response.data.stats
+
+      }));
+      console.log(response.data)
     }
 
     getPokemonInfo();

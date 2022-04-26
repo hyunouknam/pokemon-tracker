@@ -1,11 +1,14 @@
 import './detailedpopup.css';
 import ReactDom from 'react-dom';
+import Select, { createFilter } from 'react-select'
+import Pokemon from '../pokemon/Pokemon';
 
 const POKEMON_ARTWORK_BASE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
 
 const DetailedHomePopUp = ({ currentPokemon, isModalOpen, closeModal }) => {
-  if (isModalOpen !== true)
+  if (isModalOpen !== true) {
     return null;
+  }
 
   return ReactDom.createPortal(
     <>
@@ -21,16 +24,22 @@ const DetailedHomePopUp = ({ currentPokemon, isModalOpen, closeModal }) => {
         </div>
         <div className='pokemon_type'>
           {
-            currentPokemon.types.map((type) =>
-              <p key={type.type.name}>{type.type.name}</p>
-            )
+            <>
+              <p>Type:</p>
+              <Select options={currentPokemon.types}
+                filterOption={createFilter({ ignoreAccents: false })}
+              />
+            </>
           }
         </div>
         <div className='pokemon_abilities'>
           {
-            currentPokemon.abilities.map((ability) =>
-              <p key={ability.ability.name}>{ability.ability.name}</p>
-            )
+            <>
+              <p>Ability:</p>
+              <Select options={currentPokemon.abilities}
+                filterOption={createFilter({ ignoreAccents: false })}
+              />
+            </>
           }
         </div>
         <div className='pokemon_stat'>
@@ -42,6 +51,7 @@ const DetailedHomePopUp = ({ currentPokemon, isModalOpen, closeModal }) => {
             )
           }
         </div>
+        <button>Add</button>
         <button onClick={closeModal}>Close</button>
       </div>
     </>,
