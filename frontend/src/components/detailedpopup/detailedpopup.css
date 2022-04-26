@@ -21,3 +21,21 @@
 .popup p {
   margin: 0px;
 }
+
+.popup .button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.pokemon_stat_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pokemon_type {
+  display: flex;
+  flex-direction: row;
+}

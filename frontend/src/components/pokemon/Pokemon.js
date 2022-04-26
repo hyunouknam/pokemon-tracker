@@ -12,7 +12,7 @@ const Pokemon = ({ name, openModal }) => {
     const getPokemonInfo = async () => {
       const response = await pokemonService.getPokemonInfo(name);
       const types = response.data.types.map(type => {
-        return { value: type.type.name, label: type.type.name };
+        return type.type.name;
       });
       const abilities = response.data.abilities.map(ability => {
         return { value: ability.ability.name, label: ability.ability.name };
