@@ -90,11 +90,13 @@ function App() {
         currentPokemon={currentPokemon}
         isModalOpen={isHomeModalOpen}
         closeModal={closeHomeModal}
+        token={token}
       />
       <DetailedMyBoxPopUp
         currentPokemon={currentPokemon}
         isModalOpen={isMyBoxModalOpen}
         closeModal={closeMyBoxModal}
+        token={token}
       />
     </>
   );
