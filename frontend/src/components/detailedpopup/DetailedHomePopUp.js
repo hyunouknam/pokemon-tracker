@@ -20,11 +20,11 @@ const DetailedHomePopUp = ({ currentPokemon, closeModal, token }) => {
   useEffect(() => {
     if (currentPokemon !== null) {
       setHp(currentPokemon.stats[0].base_stat);
-      setAttack(currentPokemon.stats[0].base_stat);
-      setDefense(currentPokemon.stats[0].base_stat);
-      setSpecialAttack(currentPokemon.stats[0].base_stat);
-      setSpecialDefense(currentPokemon.stats[0].base_stat);
-      setSpeed(currentPokemon.stats[0].base_stat);
+      setAttack(currentPokemon.stats[1].base_stat);
+      setDefense(currentPokemon.stats[2].base_stat);
+      setSpecialAttack(currentPokemon.stats[3].base_stat);
+      setSpecialDefense(currentPokemon.stats[4].base_stat);
+      setSpeed(currentPokemon.stats[5].base_stat);
       setAbility(currentPokemon.abilities[0].value);
     }
   }, [currentPokemon])

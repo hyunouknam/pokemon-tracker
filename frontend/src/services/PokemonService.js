@@ -21,11 +21,6 @@ const getPokemonInfo = (pokemonName) => {
 const addMyPokemon = (pokemonId, name, types, ability, moves, hp, attack, defense, specialAttack, specialDefense, speed, token) => {
   axios.post(POST_MY_POKEMON_API_URL,
     {
-      headers: {
-        'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`
-      }
-    },
-    {
       pokemonId: pokemonId,
       name: name,
       types: types,
@@ -37,6 +32,11 @@ const addMyPokemon = (pokemonId, name, types, ability, moves, hp, attack, defens
       special_attack: specialAttack,
       special_defense: specialDefense,
       speed: speed,
+    },
+    {
+      headers: {
+        'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`
+      }
     }
   );
 }
