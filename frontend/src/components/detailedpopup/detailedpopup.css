@@ -29,7 +29,7 @@
   margin: 1rem;
 }
 
-.pokemon_stat_list {
+.pokemon_stat {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

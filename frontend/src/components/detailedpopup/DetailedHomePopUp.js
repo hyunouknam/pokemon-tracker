@@ -6,11 +6,8 @@ import pokemonService from '../../services/PokemonService';
 
 const POKEMON_ARTWORK_BASE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
 
-const DetailedHomePopUp = ({ currentPokemon, isModalOpen, closeModal, token }) => {
+const DetailedHomePopUp = ({ currentPokemon, closeModal, token }) => {
 
-  const [pokemonId, setPokemonId] = useState(currentPokemon.id);
-  const [name, setName] = useState("");
-  const [types, setTypes] = useState([]);
   const [ability, setAbility] = useState("");
   const [moves, setMoves] = useState([]);
   const [hp, setHp] = useState(0);
@@ -20,22 +17,18 @@ const DetailedHomePopUp = ({ currentPokemon, isModalOpen, closeModal, token }) =
   const [specialDefense, setSpecialDefense] = useState(0);
   const [speed, setSpeed] = useState(0);
 
-  /*
   useEffect(() => {
-    setPokemonId(currentPokemon.id);
-    setName(currentPokemon.name);
-    setTypes(currentPokemon.types);
-    setAbility(currentPokemon.abilities[0].value);
-    // moves can be empty by default
-    // stats are hp, attack, defense, special_attack, special_defense, speed in order in array
-    setHp(currentPokemon.stats[0].base_stat);
-    setAttack(currentPokemon.stats[1].base_stat);
-    setDefense(currentPokemon.stats[2].base_stat);
-    setSpecialAttack(currentPokemon.stats[3].base_stat);
-    setSpecialDefense(currentPokemon.stats[4].base_stat);
-    setSpeed(currentPokemon.stats[5].base_stat);
+    if (currentPokemon !== null) {
+      setHp(currentPokemon.stats[0].base_stat);
+      setAttack(currentPokemon.stats[0].base_stat);
+      setDefense(currentPokemon.stats[0].base_stat);
+      setSpecialAttack(currentPokemon.stats[0].base_stat);
+      setSpecialDefense(currentPokemon.stats[0].base_stat);
+      setSpeed(currentPokemon.stats[0].base_stat);
+      setAbility(currentPokemon.abilities[0].value);
+    }
   }, [currentPokemon])
-  */
+
 
   const handleMoves = (e) => {
     let moves = [];
@@ -44,13 +37,11 @@ const DetailedHomePopUp = ({ currentPokemon, isModalOpen, closeModal, token }) =
   }
 
   const addPokemon = async () => {
-    await pokemonService.addMyPokemon(pokemonId, name, types, ability, moves, hp, attack, defense, specialAttack, specialDefense, speed, token);
+    if (token != null) {
+      await pokemonService.addMyPokemon(currentPokemon.id, currentPokemon.name, currentPokemon.types, ability, moves, hp, attack, defense, specialAttack, specialDefense, speed, token);
+    }
 
-    // Show that pokemon was added to my box
-  }
-
-  if (isModalOpen !== true) {
-    return null;
+    // Show that pokemon was added to my box, only add if currently logged on(check if token exists)
   }
 
   return ReactDom.createPortal(
@@ -79,7 +70,7 @@ const DetailedHomePopUp = ({ currentPokemon, isModalOpen, closeModal, token }) =
               <p>Ability:</p>
               <Select options={currentPokemon.abilities}
                 filterOption={createFilter({ ignoreAccents: false })}
-                placeholder="Select an ability"
+                defaultValue={currentPokemon.abilities[0]}
                 onChange={e => setAbility(e.value)}
               />
             </>
@@ -99,15 +90,55 @@ const DetailedHomePopUp = ({ currentPokemon, isModalOpen, closeModal, token }) =
             </>
           }
         </div>
-        <div className='pokemon_stat'>
-          {
-            currentPokemon.stats.map((stat) =>
-              <div className='pokemon_stat_list' key={stat.stat.name}>
-                <p>{stat.stat.name}:</p>
-                <input placeholder={stat.base_stat} defaultValue={stat.base_stat} />
-              </div>
-            )
-          }
+        <div className='pokemon_stats'>
+          <div className='hp pokemon_stat'>
+            <p>HP:</p>
+            <input
+              placeholder={currentPokemon.stats[0].base_stat}
+              defaultValue={currentPokemon.stats[0].base_stat}
+              onChange={e => setHp(Number(e.target.value))}
+            />
+          </div>
+          <div className='attack pokemon_stat'>
+            <p>Attack:</p>
+            <input
+              placeholder={currentPokemon.stats[1].base_stat}
+              defaultValue={currentPokemon.stats[1].base_stat}
+              onChange={e => setAttack(Number(e.target.value))}
+            />
+          </div>
+          <div className='defense pokemon_stat'>
+            <p>Defense:</p>
+            <input
+              placeholder={currentPokemon.stats[2].base_stat}
+              defaultValue={currentPokemon.stats[2].base_stat}
+              onChange={e => setDefense(Number(e.target.value))}
+            />
+          </div>
+          <div className='special_attack pokemon_stat'>
+            <p>Special Attack:</p>
+            <input
+              placeholder={currentPokemon.stats[3].base_stat}
+              defaultValue={currentPokemon.stats[3].base_stat}
+              onChange={e => setSpecialAttack(Number(e.target.value))}
+            />
+          </div>
+          <div className='special_defense pokemon_stat'>
+            <p>Special Defense:</p>
+            <input
+              placeholder={currentPokemon.stats[4].base_stat}
+              defaultValue={currentPokemon.stats[4].base_stat}
+              onChange={e => setSpecialDefense(Number(e.target.value))}
+            />
+          </div>
+          <div className='speed pokemon_stat'>
+            <p>Speed:</p>
+            <input
+              placeholder={currentPokemon.stats[5].base_stat}
+              defaultValue={currentPokemon.stats[5].base_stat}
+              onChange={e => setSpeed(Number(e.target.value))}
+            />
+          </div>
         </div>
         <div className='button'>
           <button onClick={addPokemon}>Add</button>

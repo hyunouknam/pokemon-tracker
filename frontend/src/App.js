@@ -86,12 +86,14 @@ function App() {
           }
         />
       </Routes>
-      <DetailedHomePopUp
-        currentPokemon={currentPokemon}
-        isModalOpen={isHomeModalOpen}
-        closeModal={closeHomeModal}
-        token={token}
-      />
+      {
+        isHomeModalOpen &&
+        <DetailedHomePopUp
+          currentPokemon={currentPokemon}
+          closeModal={closeHomeModal}
+          token={token}
+        />
+      }
       <DetailedMyBoxPopUp
         currentPokemon={currentPokemon}
         isModalOpen={isMyBoxModalOpen}

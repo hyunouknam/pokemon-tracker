@@ -11,7 +11,6 @@ const MyBox = ({ token, openModal }) => {
     const getMyPokemonList = async () => {
       const response = await pokemonService.getMyPokemon(token);
       setMyPokemonList(response.data);
-      console.log(response.data)
     }
 
     getMyPokemonList();
