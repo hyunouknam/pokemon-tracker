@@ -96,7 +96,7 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
             <input
               placeholder={currentPokemon.hp}
               defaultValue={currentPokemon.hp}
-            //onChange={e => setHp(Number(e.target.value))}
+              onChange={e => setPokemon(prev => ({ ...prev, hp: Number(e.target.value) }))}
             />
           </div>
           <div className='attack pokemon_stat'>
@@ -104,7 +104,7 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
             <input
               placeholder={currentPokemon.attack}
               defaultValue={currentPokemon.attack}
-            //onChange={e => setAttack(Number(e.target.value))}
+              onChange={e => setPokemon(prev => ({ ...prev, attack: Number(e.target.value) }))}
             />
           </div>
           <div className='defense pokemon_stat'>
@@ -112,7 +112,7 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
             <input
               placeholder={currentPokemon.defense}
               defaultValue={currentPokemon.defense}
-            //onChange={e => setDefense(Number(e.target.value))}
+              onChange={e => setPokemon(prev => ({ ...prev, defense: Number(e.target.value) }))}
             />
           </div>
           <div className='special_attack pokemon_stat'>
@@ -120,7 +120,7 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
             <input
               placeholder={currentPokemon.special_attack}
               defaultValue={currentPokemon.special_attack}
-            //onChange={e => setSpecialAttack(Number(e.target.value))}
+              onChange={e => setPokemon(prev => ({ ...prev, special_attack: Number(e.target.value) }))}
             />
           </div>
           <div className='special_defense pokemon_stat'>
@@ -128,7 +128,7 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
             <input
               placeholder={currentPokemon.special_defense}
               defaultValue={currentPokemon.special_defense}
-            //onChange={e => setSpecialDefense(Number(e.target.value))}
+              onChange={e => setPokemon(prev => ({ ...prev, special_defense: Number(e.target.value) }))}
             />
           </div>
           <div className='speed pokemon_stat'>
@@ -136,7 +136,7 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
             <input
               placeholder={currentPokemon.speed}
               defaultValue={currentPokemon.speed}
-            //onChange={e => setSpeed(Number(e.target.value))}
+              onChange={e => setPokemon(prev => ({ ...prev, speed: Number(e.target.value) }))}
             />
           </div>
         </div>
