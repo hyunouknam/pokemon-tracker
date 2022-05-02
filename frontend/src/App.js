@@ -94,12 +94,14 @@ function App() {
           token={token}
         />
       }
-      <DetailedMyBoxPopUp
-        currentPokemon={currentPokemon}
-        isModalOpen={isMyBoxModalOpen}
-        closeModal={closeMyBoxModal}
-        token={token}
-      />
+      {
+        isMyBoxModalOpen &&
+        <DetailedMyBoxPopUp
+          currentPokemon={currentPokemon}
+          closeModal={closeMyBoxModal}
+          token={token}
+        />
+      }
     </>
   );
 }
