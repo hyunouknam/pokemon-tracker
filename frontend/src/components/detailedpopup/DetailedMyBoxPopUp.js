@@ -12,7 +12,6 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
   const [pokemonInfo, setPokemonInfo] = useState({});
   const [abilitiesList, setAbilitiesList] = useState([]);
   const [movesList, setMovesList] = useState([]);
-  const [initialMovesList, setIntialMovesList] = useState([]);
 
   useEffect(() => {
     const getPokemonInfo = async () => {
@@ -25,18 +24,18 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
       const moves = response.data.moves.map(moves => {
         return { value: moves.move.name, label: moves.move.name };
       });
-      const initialMoves = currentPokemon.moves.map(move => {
-        return { value: move, label: move };
-      });
 
       setAbilitiesList(abilities);
       setMovesList(moves);
-      setIntialMovesList(initialMoves);
     }
 
     getPokemonInfo();
     setPokemon(currentPokemon);
   }, [currentPokemon])
+
+  const handleInitialMoves = currentPokemon.moves.map(move => {
+    return { value: move, label: move };
+  });
 
   const handleMoves = (e) => {
     let moves = [];
@@ -84,7 +83,7 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
                 filterOption={createFilter({ ignoreAccents: false })}
                 isMulti
                 menuPlacement="top"
-                defaultValue={initialMovesList}
+                defaultValue={handleInitialMoves}
                 onChange={(e) => handleMoves(e)}
               />
             </>
