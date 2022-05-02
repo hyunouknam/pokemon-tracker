@@ -33,7 +33,7 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
     setPokemon(currentPokemon);
   }, [currentPokemon])
 
-  const handleInitialMoves = currentPokemon.moves.map(move => {
+  const handleInitialMoves = () => currentPokemon.moves.map(move => {
     return { value: move, label: move };
   });
 
