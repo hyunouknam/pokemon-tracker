@@ -8,7 +8,7 @@ const POST_MY_POKEMON_API_URL = 'http://localhost:8080/api/post/my-pokemon';
 const UPDATE_MY_POKEMON_API_URL = 'http://localhost:8080/api/update/my-pokemon';
 
 const getPokemonNamesList = () => {
-  return axios.get(POKEMONS_REST_API_URL_TEST);
+  return axios.get(POKEMONS_REST_API_URL);
 };
 
 const getPokemonInfo = (pokemonName) => {
