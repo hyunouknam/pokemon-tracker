@@ -6,7 +6,7 @@ import Select, { createFilter } from 'react-select'
 
 const POKEMON_ARTWORK_BASE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
 
-const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
+const DetailedMyBoxPopUp = ({ currentPokemon, closeModal, token }) => {
 
   const [pokemon, setPokemon] = useState({})
   const [pokemonInfo, setPokemonInfo] = useState({});
@@ -41,6 +41,14 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
     let moves = [];
     e.map((move) => moves.push(move.value));
     setPokemon(prev => ({ ...prev, moves: moves }));
+  }
+
+  const editPokemon = async () => {
+    if (token != null) {
+      await pokemonService.editMyPokemon(pokemon, token);
+    }
+
+    // Show that pokemon was added to my box, only add if currently logged on(check if token exists)
   }
 
   return ReactDom.createPortal(
@@ -140,7 +148,7 @@ const DetailedMyBoxPopUp = ({ currentPokemon, closeModal }) => {
           </div>
         </div>
         <div className='button'>
-          <button>Save</button>
+          <button onClick={editPokemon}>Save</button>
           <button onClick={closeModal}>Close</button>
         </div>
       </div>

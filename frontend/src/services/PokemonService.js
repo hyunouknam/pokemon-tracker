@@ -5,6 +5,7 @@ const POKEMONS_REST_API_URL_TEST = 'http://localhost:8080/api/get/pokemon-list-t
 const POKEMON_INFO_REST_API_URL = 'http://localhost:8080/api/get/pokemon-info';
 const GET_MY_POKEMON_API_URL = 'http://localhost:8080/api/get/my-pokemon';
 const POST_MY_POKEMON_API_URL = 'http://localhost:8080/api/post/my-pokemon';
+const UPDATE_MY_POKEMON_API_URL = 'http://localhost:8080/api/update/my-pokemon';
 
 const getPokemonNamesList = () => {
   return axios.get(POKEMONS_REST_API_URL_TEST);
@@ -41,6 +42,17 @@ const addMyPokemon = (pokemonId, name, types, ability, moves, hp, attack, defens
   );
 }
 
+const editMyPokemon = (pokemon, token) => {
+  axios.put(UPDATE_MY_POKEMON_API_URL,
+    pokemon,
+    {
+      headers: {
+        'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`
+      }
+    }
+  );
+}
+
 const getMyPokemon = (token) => {
   return axios.get(GET_MY_POKEMON_API_URL,
     {
@@ -51,6 +63,6 @@ const getMyPokemon = (token) => {
   );
 }
 
-export default { getPokemonNamesList, getPokemonInfo, getMyPokemon, addMyPokemon };
+export default { getPokemonNamesList, getPokemonInfo, getMyPokemon, addMyPokemon, editMyPokemon };
 
 
