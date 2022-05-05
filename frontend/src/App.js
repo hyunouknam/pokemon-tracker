@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 
 function App() {
 
-  const [pokemonNamesList, setPokemonNamesList] = useState([]);
   const [isHomeModalOpen, setIsHomeModalOpen] = useState(false);
   const [isMyBoxModalOpen, setIsMyBoxModalOpen] = useState(false);
   const [currentPokemon, setCurrentPokemon] = useState({});
@@ -20,12 +19,7 @@ function App() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const getPokemons = async () => {
-      const response = await pokemonService.getPokemonNamesList();
-      setPokemonNamesList(response.data);
-    };
 
-    getPokemons();
   }, []);
 
   const openHomeModal = (pokemon) => {
@@ -80,7 +74,6 @@ function App() {
           path='/'
           element={
             <Home
-              pokemonNamesList={pokemonNamesList}
               openModal={openHomeModal}
             />
           }
