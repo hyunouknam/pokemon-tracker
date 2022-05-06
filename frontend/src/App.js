@@ -1,12 +1,10 @@
 import { DetailedHomePopUp, DetailedMyBoxPopUp, Navbar } from './components';
 import { Home, MyBox, Login } from './pages';
-import pokemonService from './services/PokemonService';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./app.css";
 import userService from './services/UserService';
 import { useNavigate } from 'react-router-dom';
-
 
 function App() {
 

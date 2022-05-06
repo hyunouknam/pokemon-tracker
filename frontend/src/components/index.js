@@ -3,3 +3,4 @@ export { default as DetailedMyBoxPopUp } from './detailedpopup/DetailedMyBoxPopU
 export { default as Navbar } from './navbar/Navbar';
 export { default as MyPokemon } from './pokemon/MyPokemon';
 export { default as Pokemon } from './pokemon/Pokemon';
+export { default as Search } from './search/Search';
